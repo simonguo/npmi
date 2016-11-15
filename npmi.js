@@ -27,10 +27,7 @@ var npmi = function (options, callback) {
         savedPrefix  = null;
 
     if(registry){
-        //npm.config.set('registry','https://registry.npm.taobao.org')
-        npm.commands.config(['set'].concat(['registry',registry]), function(e){
-            console.log(e);
-        });
+        npm.config.set('registry' , registry);
     }
 
     function viewCallback(installedVersion)  {
