@@ -23,7 +23,15 @@ var npmi = function (options, callback) {
         forceInstall = options.forceInstall || false,
         localInstall = options.localInstall || false,
         npmLoad      = options.npmLoad || {loglevel: 'silent'},
+        registry     = options.registry,
         savedPrefix  = null;
+
+    if(registry){
+        //npm.config.set('registry','https://registry.npm.taobao.org')
+        npm.commands.config(['set'].concat(['registry',registry]), function(e){
+            console.log(e);
+        });
+    }
 
     function viewCallback(installedVersion)  {
         return function (err, view) {
