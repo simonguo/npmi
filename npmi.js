@@ -27,7 +27,9 @@ var npmi = function (options, callback) {
         savedPrefix  = null;
 
     if(registry){
-        npm.config.set('registry' , registry);
+        npm.commands.config(['set'].concat(['registry',registry]), function(e){
+            console.log(e);
+        });
     }
 
     function viewCallback(installedVersion)  {
